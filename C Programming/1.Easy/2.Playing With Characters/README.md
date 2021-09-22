@@ -10,4 +10,4 @@ You have to print the character, ch, in the first line. Then print s in next lin
 
 # Link of Challenge
 
-https://www.hackerrank.com/challenges/hello-world-c/problem
+https://www.hackerrank.com/challenges/playing-with-characters/problem
