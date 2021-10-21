@@ -6,24 +6,6 @@
 
 - To prevent infinite recursion, if...else statement (or similar approach) can be used where one branch makes the recursive call and other doesn't.
 
-package main
-
-import (
-	"encoding/json"
-	"fmt"
-	"os"
-)
-
-type Person struct {
-	Name string
-}
-
-func main() {
-	p := &Person{Name: "World"}
-	json.NewDecoder(os.Stdin).Decode(p)
-	fmt.Printf("Hello %v!", p.Name)
-}
-
 # Task
 
 There is a series,S, where the next term is the sum of pervious three terms. Given the first three terms of the series,a,b, and c respectively, you have to output the nth term of the series using recursion.
