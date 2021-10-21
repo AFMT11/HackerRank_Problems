@@ -21,11 +21,18 @@ int main()
     if (n_endptr == n_str || *n_endptr != '\0') { exit(EXIT_FAILURE); }
 
     // Write Your Code Here
-    char *arr[9] = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+    char *arr[10] = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+    // So, here we created an array of 9-literals (Strings)
+    // then we make a condition to check if the entered number
+    // by the user is within a range from 1 to 9, if so then
+    // print the corresponding string of an index equal to n
+    // as if the entered number is 6 then the corresponding element
+    // of index 6 is "six", and so on! but if the enter number is not
+    // in the range then simply print "Greater than 9"
 
     if(n >= 1 && n <= 9)
     {
-        printf("%s", arr[n - 1]);
+        printf("%s", arr[n]); // print the value of indexes from 1 to 9
     }
     else
     {
