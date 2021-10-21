@@ -6,17 +6,22 @@
 
 - To prevent infinite recursion, if...else statement (or similar approach) can be used where one branch makes the recursive call and other doesn't.
 
-void recurse() 
-{
-    .....
-    recurse()  //recursive call
-    .....
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+	"os"
+)
+
+type Person struct {
+	Name string
 }
-int main() 
-{
-    .....
-    recurse(); //function call
-    .....
+
+func main() {
+	p := &Person{Name: "World"}
+	json.NewDecoder(os.Stdin).Decode(p)
+	fmt.Printf("Hello %v!", p.Name)
 }
 
 # Task
