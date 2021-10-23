@@ -104,6 +104,7 @@ int main()
     // And we can do it with a simple equation:
     // count  = i - ((i - (n - 1)) * 2)
     // where: i index of rows
+    //        n input from the user (numbers of the outer edge)
 
     // So, if i = 4, 5, 6, then
     // count = 4 - ((4 - (4 - 1)) * 2) = 2
