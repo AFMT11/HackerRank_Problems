@@ -31,7 +31,7 @@ char ** word_No;
 char**** Doc_DOC;
 char**** get_document(char* text)
 {
-    static int i, k, P_index = 0, S_index = 0, W_index = 0;
+    static int i, k, P_index = 0;
     char C_Text = 0;
     char Temp_char[10] = {0};
     char* Buff_char = (char *) malloc(sizeof(int) * 100);
@@ -71,7 +71,7 @@ char**** get_document(char* text)
             Doc_DOC[P_index - 1] = malloc(sizeof(char**) * sent_No[P_index - 1]);
 
             word_No = (char**) malloc(sizeof(char*) * P_index);
-            word_No[P_index] = (char*) malloc(sizeof(char) * sent_No[P_index - 1]);
+            word_No[P_index - 1] = (char*) malloc(sizeof(char) * sent_No[P_index - 1]);
             word_No[P_index - 1][sent_No[P_index - 1] - 1] = 1;
             Doc_DOC[P_index - 1][sent_No[P_index - 1] - 1] = malloc(sizeof(char*) * word_No[P_index - 1][sent_No[P_index - 1] - 1]);
         }
@@ -101,6 +101,7 @@ char**** get_document(char* text)
                 sent_No[P_index - 1]++;
                 Doc_DOC[P_index - 1] = realloc(Doc_DOC[P_index - 1], sizeof(char**) * sent_No[P_index - 1]);
 
+                word_No[P_index] = realloc(word_No[P_index], sizeof(char) * sent_No[P_index - 1]);
                 word_No[P_index - 1][sent_No[P_index - 1] - 1] = 1;
                 Doc_DOC[P_index - 1][sent_No[P_index - 1] - 1] = malloc(sizeof(char*) * word_No[P_index - 1][sent_No[P_index - 1] - 1]);
             }
@@ -117,9 +118,12 @@ char**** get_document(char* text)
             P_index++;
             Doc_DOC = realloc(Doc_DOC, sizeof(char***) * P_index);
 
+            sent_No = realloc(sent_No, sizeof(char) * P_index);
             sent_No[P_index - 1] = 1;
             Doc_DOC[P_index - 1] = malloc(sizeof(char**) * sent_No[P_index - 1]);
 
+            word_No = realloc(word_No, sizeof(char*) * P_index);
+            word_No[P_index - 1] = (char*) malloc(sizeof(char) * sent_No[P_index - 1]);
             word_No[P_index - 1][sent_No[P_index - 1] - 1] = 1;
             Doc_DOC[P_index - 1][sent_No[P_index - 1] - 1] = malloc(sizeof(char*) * word_No[P_index - 1][sent_No[P_index - 1] - 1]);
         }
@@ -184,7 +188,8 @@ int main()
     int q;
     scanf("%d", &q);
 
-    while (q--) {
+    while (q--)
+    {
         int type;
         scanf("%d", &type);
 
@@ -195,14 +200,16 @@ int main()
             print_word(word);
         }
 
-        else if (type == 2){
+        else if (type == 2)
+        {
             int k, m;
             scanf("%d %d", &k, &m);
             char** sentence = kth_sentence_in_mth_paragraph(document, k, m);
             print_sentence(sentence);
         }
 
-        else{
+        else
+        {
             int k;
             scanf("%d", &k);
             char*** paragraph = kth_paragraph(document, k);
